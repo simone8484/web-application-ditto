@@ -1,0 +1,146 @@
+::ng-deep ng2-smart-table table tr td {
+    padding: 0.25em !important;
+    font-size: 13px !important;
+  }
+  ::ng-deep   ng2-smart-table table-cell-edit-mode {
+    display: contents;
+  }
+  ::ng-deep ng2-smart-table table tr.ng2-smart-titles th {
+    background: #fb9425;
+    color: #000;
+    padding: 0.25em !important;
+    a {
+      color: #000 !important;
+      font-weight: 600;
+    }
+  }
+  ::ng-deep ng2-smart-table th.ng2-smart-actions-title-add a {
+    font-size: 1em !important;
+    background-color: #5c9ad0;
+  }
+
+  ::ng-deep ng2-smart-table .customformat {
+    text-align: center !important;
+    font-size: 1.5em !important;
+  }
+  ::ng-deep ng2-smart-table .customiconformat {
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    padding: 5px;
+  }
+  ::ng-deep ng2-smart-table .disableicon {
+    opacity: 0.65; 
+    cursor: not-allowed;
+  }
+
+  ::ng-deep ng2-smart-table .ng2-smart-actions {
+    width: 1px;
+  }
+
+  ::ng-deep ng2-smart-table .ng2-smart-actions {
+    height: inherit!important;
+  }
+  ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline-block;
+    text-align: center;
+    width: inherit!important;
+  }  
+
+  ::ng-deep .nb-edit {
+    font-size: 35px!important;
+  }
+
+  ::ng-deep .nb-trash {
+    font-size: 35px!important;
+  }
+
+  ::ng-deep .nb-close-circled{
+    font-size: 35px!important;
+    color:red;
+  }
+
+  ::ng-deep .nb-chekmark{
+    font-size: 35px!important;
+    color:green;
+  }
+
+  ::ng-deep .fade {
+    opacity: 1;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: hidden!important;
+}
+::ng-deep .map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+}
+
+::ng-deep ng-select .ng-select-container {
+
+  height: 26px!important;
+
+  min-height: 26px!important;
+
+  border-radius: 0px!important;
+
+}
+
+::ng-deep input[type=text] {
+  border: 1px solid #ccc
+}
+
+#map {
+  height: 100%;
+}
+
+::ng-deep .badge {
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  background-color: #004e52!important;
+}
+
+::ng-deep .iconClose{
+  color: #fff;
+  background-color: #004e52!important;
+}
+
+::ng-deep .badgeAnd {
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  background-color: #39c0ed!important;
+}
+
+::ng-deep .badgeOr {
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  background-color: #ffa900!important;
+}
