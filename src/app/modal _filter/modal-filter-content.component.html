@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">Filtra thing</h4>
+</div>
+<div class="modal-body" [formGroup]="searchThingForm">
+<div class="row">
+  <div class="col-md-4">
+    <label for="op">Field:</label>
+    <ng-select formControlName="field" >
+      <ng-option *ngFor="let field of arrayFields" [value]="field">{{field}}</ng-option>
+   </ng-select>
+  </div>
+  <div class="col-md-3">
+    <label for="op">Operazione:</label>
+    <ng-select formControlName="operation" >
+      <ng-option *ngFor="let op of operations" [value]="op.action">{{op.label}}</ng-option>
+   </ng-select>
+  </div>
+  <div class="col-md-4">
+    <label for="value">Valore (comma separetor):</label>
+    <div class="form-group">
+      <input formControlName="value" type="text" style="width: 100%">
+    </div>
+  </div>
+  <div class="col-md-1" style="margin-top: 22px;">
+    <button type="button" class="btn btn-primary"  [disabled]="!searchThingForm.valid" (click)="addFilter()">+</button>
+  </div>
+</div>
+<br>
+<div class="row" *ngIf="selectedFilter.length > 0">
+  <div class="col-md-12">
+    <label> Filtri selezionati</label>
+    <hr style=" margin-top: 5px!important;">
+    <div class="col-md-12" *ngIf="selectedFilter.length > 1">
+      <input name="logica" ng-control="options" type="radio" [value]="1"  formControlName="logica" > AND
+      <input name="logica" ng-control="options" type="radio" [value]="2" formControlName="logica" > OR<br/>
+    </div>
+    <div class="col-md-12">
+      <span *ngFor="let item of selectedFilter" >
+        <span class="badge" *ngIf="item.operation != 'AND' && item.operation != 'OR'" style="font-size: 15px; margin-left: 3px; margin-right: 3px; margin-bottom: 3px;"> {{item.field}} {{item.label}} {{item.value}} <fa-icon class="iconClose" [icon]="faWindowClose"></fa-icon></span>
+        <span class="badgeAnd" *ngIf="item.operation == 'AND'" style="font-size: 15px; margin-left: 3px; margin-right: 3px; margin-bottom: 3px;"> {{item.field}} {{item.label}} {{item.value}} </span>
+        <span class="badgeOr" *ngIf="item.operation == 'OR'" style="font-size: 15px; margin-left: 3px; margin-right: 3px; margin-bottom: 3px;"> {{item.field}} {{item.label}} {{item.value}} </span>
+      </span>
+    </div>
+  </div>
+</div>
+
+</div>
+<div *ngIf="flag === false" class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="close()">Ok</button>
+  <button type="button" class="btn btn-primary" (click)="activeModal.dismiss('Annulla click')"
+    *ngIf="confirmed">Annulla</button>
+</div>

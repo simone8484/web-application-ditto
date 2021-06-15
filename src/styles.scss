@@ -1,0 +1,23 @@
+@import '~nebular-icons/css/nebular-icons.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.modal-content{
+    width: 90%!important;
+    position: absolute!important;
+    margin-left: 5%!important;
+}
+
+.modal-dialog {
+  width: 100%!important;
+  margin: 0px!important;
+}
+
+.mat-progress-spinner {
+  display: block;
+  position: absolute;
+  left: 45%;
+  top: -300px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
