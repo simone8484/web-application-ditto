@@ -1,0 +1,107 @@
+<div class="modal-header">
+  <h4 class="modal-title">Dettaglio thing</h4>
+</div>
+<div [formGroup]="editThingForm" class="modal-body">
+  <p *ngIf="!(confirmed)">{{name}}</p>
+  <div class="row">
+    <div class="col-md-6">
+      <label>thing id</label>
+      {{ thing._thingId }}
+    </div>
+    <div class="col-md-6">
+      <label>thing policy id</label>
+      {{ thing._policyId }}
+    </div>
+  </div>
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-md-12">
+      <label>Attributi</label>
+      <hr style="margin-top: 0px; margin-bottom: 5px;">
+    </div>
+    <div *ngFor="let item of thing.attributes | keyvalue">
+      <span class="col-md-6" *ngIf="item.key !== 'formly' && item.key !== 'mqttConfiguration'">
+        <label>{{item.key}}</label>: {{item.value}}
+      </span>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-md-12">
+      <label>Features</label>
+      <hr style="margin-top: 0px; margin-bottom: 5px;">
+    </div>
+    <div class="col.md-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit(model)">
+        <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-md-12">
+      <label>Comandi</label>
+      <hr style="margin-top: 0px; margin-bottom: 5px;">
+    </div>
+    <div class="col-md-12" style="margin-top: 5px;">
+      <button type="button" *ngFor="let item of comandi" style="margin-right: 3px!important;" class="btn btn-success"
+        (click)="sendCommand(item.action)">{{item.name}}</button>
+      <button type="button" class="btn btn-primary" (click)="enabledModify()">{{modificaLabel}}</button>
+    </div>
+    <div *ngIf="abilitaModifiche" class="col-md-12" style="margin-top: 10px;">
+      <div class="form-group">
+        <label for="comment">json Thing:</label>
+        <textarea class="form-control" rows="15" formControlName="updatedThing">{{thing |json}}</textarea>
+      </div>
+    </div>
+    <div *ngIf="abilitaModifiche" class="col-md-12">
+      <button type="button" class="btn btn-primary" (click)="saveModify()">Salva Modifiche</button>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-md-12">
+      <label>Configurazione mqtt</label>
+      <hr style="margin-top: 0px; margin-bottom: 5px;">
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="url">Url:</label>
+        <input type="text" formControlName="urlMqtt" class="form-control" id="url">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="frequency">Frequenza:</label>
+        <input type="text" formControlName="frequencyMqtt" class="form-control" id="frequency">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="frequency">Pid:</label>
+        <input type="text" formControlName="pid" class="form-control" id="pid">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button type="button" [disabled]="mqttStatus === 'start'" style="margin-right: 3px!important; margin-top: 25px;" class="btn btn-success"
+        (click)="sendCommand('mqttUpdate')">Salva</button>
+        <button *ngIf="mqttStatus === 'stop'" type="button" style="margin-right: 3px!important; margin-top: 25px;" class="btn btn-success"
+        (click)="sendCommand('mqttStart')"><fa-icon [icon]="faPlay"></fa-icon> Start</button>
+        <button *ngIf="mqttStatus === 'start'" type="button" style="margin-right: 3px!important; margin-top: 25px;" class="btn btn-danger"
+        (click)="sendCommand('mqttStop')"><fa-icon [icon]="faStop"></fa-icon> Stop</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="mqttStatus === 'ready'" style="margin-top: 15px;">
+    <div class="col-md-12">
+        <mat-progress-spinner
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+      </mat-progress-spinner>
+      </div>
+  </div>
+  <!--   -->
+</div>
+<div *ngIf="flag === false" class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Ok</button>
+  <button type="button" class="btn btn-primary" (click)="activeModal.dismiss('Annulla click')"
+    *ngIf="confirmed">Annulla</button>
+</div>
