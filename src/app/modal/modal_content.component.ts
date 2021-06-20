@@ -1,9 +1,9 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DefaultHttpMessagesHandle, DittoHttpClientV2, HttpMessagesHandle, HttpThingsHandleV2 } from '@eclipse-ditto/ditto-javascript-client-api_1.0-pre';
+import { DittoHttpClientV2, HttpMessagesHandle, HttpThingsHandleV2 } from '@eclipse-ditto/ditto-javascript-client-api_1.0-pre';
 import { DittoDomClient } from '../ditto-dom-client';
 import { DomHttpBasicAuth } from '../dom-auth';
-import { Feature, Features, Thing } from '@eclipse-ditto/ditto-javascript-client-api_1.0-pre/dist/model/things.model';
+import { Feature, Thing } from '@eclipse-ditto/ditto-javascript-client-api_1.0-pre/dist/model/things.model';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import {FormlyFieldConfig} from '@ngx-formly/core';
 import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons';
