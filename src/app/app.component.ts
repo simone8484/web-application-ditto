@@ -12,6 +12,7 @@ import * as L from 'leaflet';
 import { ModalFilterComponent } from './modal _filter/modal-filter.component';
 import { GlobalService } from './services/global';
 import { FilesService } from './services/files.services';
+import { environment } from '../environments/environment';
 
 "use strict";
 @Component({
@@ -77,9 +78,9 @@ export class AppComponent {
     noDataMessage: "Nessun sensore presente",
   };
 
-  domain = '192.168.1.3:8080';
-  username = 'ditto';
-  password = 'ditto';
+  domain = environment.urlDomainDitto;
+  username = environment.username;
+  password = environment.password;
   client: DittoHttpClientV2;
   thingsHandle: HttpThingsHandleV2;
   search: ditto.SearchHandle;

@@ -9,6 +9,7 @@ import {FormlyFieldConfig} from '@ngx-formly/core';
 import { faPlay, faStop } from '@fortawesome/free-solid-svg-icons';
 import {ThemePalette} from '@angular/material/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-modal-content',
@@ -38,9 +39,9 @@ export class ModalContentComponent {
   faPlay = faPlay;
   faStop = faStop;
 
-  domain = '192.168.1.3:8080';
-  username = 'ditto';
-  password = 'ditto';
+  domain = environment.urlDomainDitto;
+  username = environment.username;
+  password = environment.password;
   client: DittoHttpClientV2;
   thingsHandle: HttpThingsHandleV2;
   messaggeHandle: HttpMessagesHandle;
