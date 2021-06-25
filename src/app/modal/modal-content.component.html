@@ -19,7 +19,7 @@
       <hr style="margin-top: 0px; margin-bottom: 5px;">
     </div>
     <div *ngFor="let item of thing.attributes | keyvalue">
-      <span class="col-md-6" *ngIf="item.key !== 'formly' && item.key !== 'mqttConfiguration'">
+      <span class="col-md-6" *ngIf="item.key !== 'formly' && item.key !== 'mqttConfiguration' && item.key !== 'status'" >
         <label>{{item.key}}</label>: {{item.value}}
       </span>
     </div>

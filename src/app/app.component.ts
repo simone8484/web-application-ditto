@@ -13,6 +13,8 @@ import { ModalFilterComponent } from './modal _filter/modal-filter.component';
 import { GlobalService } from './services/global';
 import { FilesService } from './services/files.services';
 import { environment } from '../environments/environment';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 "use strict";
 @Component({
@@ -164,18 +166,20 @@ export class AppComponent {
       }
     }
 
-    this.settings.columns['_features.features'] = {
+    this.settings.columns['_attributes.status'] = {
       title: 'Stato',
-      filter: true,
+      filter: false,
       type: "html",
       valuePrepareFunction: (cell, row) => {
-        if(row._features != undefined && row._features.features['machine-coofe'] !== undefined){
+        if(row._attributes.status !== undefined){
           console.log("sdsd")
-          var feature = row._features.features['machine-coofe'];
-          if(feature._properties.status === "on"){
-            return '<i class="nb-chekmark"></i> ACCESO';
+          var status = row._attributes.status['status'];
+          var lastUpdate = row._attributes.status['lastUpdate'];
+          var differenza = Date.now() - lastUpdate;
+          if(status === "start" && differenza < 10000 ){
+            return '<div class="circleStart"></div>';
           }else{
-            return '<i class="nb-close-circled"></i> SPENTO';
+            return '<div class="circleStop"></div>';
           }
         }else{
           return "stato sconosciuto"
@@ -311,7 +315,9 @@ export class AppComponent {
 
   //  searchOption1.withFilter("and(eq(attributes/model,\"Speaking coffee machine\"),eq(attributes/location,\"Catania, Via Androne\"))");
  //   searchOption1.withFilter("eq(attributes/location,\"Catania, Via Androne\")");
-    this.search.search(searchOption1).then(res=>{
+ interval(5000)
+    .pipe(startWith(0), switchMap(() => this.search.search(searchOption1))).subscribe
+    (res=>{
       this.source = res.items;
       this.makeThingMarkers();
     })

@@ -144,3 +144,17 @@
   border-radius: .25rem;
   background-color: #ffa900!important;
 }
+
+::ng-deep .circleStart {
+  background-color: green;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+}
+
+::ng-deep .circleStop {
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+}
